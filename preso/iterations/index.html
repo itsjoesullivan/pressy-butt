@@ -2,11 +2,10 @@
 <html>
 <!--
   Created using jsbin.com
-  Source can be edited via http://jsbin.com/somagipa/3/edit
+  Source can be edited via http://jsbin.com/somagipa/4/edit
 -->
 <head>
 <script src="http://code.jquery.com/jquery-git2.js"></script>
-  <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
   <meta charset="utf-8">
   <title>JS Bin</title>
 
@@ -46,26 +45,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff32d6', end
   </div>
 
 <script>
-var app = new Firebase('https://blinding-fire-2928.firebaseio.com');
-
-app.set('scores', []);
-app.get
-
 el = document.getElementById('content');
 var run = function() {
   var started = false;
   var done = false;
   var ct = 0;
   var timeout = false;
-  $(document).keyup(function(e) { 
-    console.log(e.which);
+  $(document).keypress(function(e) { 
     if (done) {
       el.innerHTML = 'You played, typing "\\" ' + ct + ' times in 5 seconds. That\'s like ' + (ct*12) + ' times per minute. Tell people about this.';
       return;
     }
     if (!started) {
       
-      if(e.which === 220) {
+      if(e.which === 92) {
          el.innerHTML = 'You are now playing. Type "\\" often.';
         started = true
         timeout = setTimeout(function(e) {
@@ -74,10 +67,10 @@ var run = function() {
         }, 5000);
       } 
     } else {
-      if(e.which === 220) {
+      if(e.which === 92) {
         if( ct > 100) {
           clearTimeout( timeout );
-          el.innerHTML = "DON'T CHEAT";
+          el.innerHTML = "DONT CHEAT";
         }
         ct++;
       } 
@@ -89,7 +82,7 @@ run()
 el.innerHTML = 'Press "\\" to begin.';
 </script>
 <script src="http://static.jsbin.com/js/render/edit.js?3.14.1"></script>
-<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"SeCVcDXVHGMWNvSSfGHxALlm"});</script>
+<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"YssvewJ4Hy2W0dAZi4YaNgUn"});</script>
 <script>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-1656750-34']);
