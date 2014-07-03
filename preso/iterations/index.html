@@ -2,7 +2,7 @@
 <html>
 <!--
   Created using jsbin.com
-  Source can be edited via http://jsbin.com/somagipa/9/edit
+  Source can be edited via http://jsbin.com/somagipa/10/edit
 -->
 <head>
 <script src="http://code.jquery.com/jquery-git2.js"></script>
@@ -20,7 +20,7 @@ html {
 body {
   height: 100%;
   margin: 0;
-  padding: 50px 20px 20px;
+  padding: 35px 20px 20px;
   font-family: sans-serif;
   line-height: 1.65em;
   color: white;
@@ -39,14 +39,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff32d6', end
 .game-wrapper {
   max-width: 800px;
   margin: 0 auto;
-}
-
-h1 {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 2.5em;
-  letter-spacing: 5px;
-  margin: 0 0 50px 0;
 }
 
 #name {
@@ -81,7 +73,6 @@ h1 {
 </head>
 <body>
   <div class="game-wrapper">
-    <h1>Pressy Butt</h1>
     <input id='name' placeholder='name' >
     <div id='content'>
     </div>
@@ -96,7 +87,9 @@ scoreboard = [];
 app.child('scores').on('value', function(snapshot) {
   scoreboard = JSON.parse( snapshot.val() );
   var array = JSON.parse(snapshot.val());
-  console.log(array);
+  array = array.sort(function(a, b) {
+    return parseInt(b.score) > parseInt(a.score);
+  });
   var str = '<ul>';
   array.forEach(function(score) {
     str += '<li>' + score.score + ' -- ' + score.name + '</li>';
@@ -150,7 +143,7 @@ run()
 el.innerHTML = 'Press "\\" to begin.';
 </script>
 <script src="http://static.jsbin.com/js/render/edit.js?3.14.1"></script>
-<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"ayrmBljbF9LWLkoDeWgCDHud"});</script>
+<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"DyZFSXGX82U0BW6sogv9Hxs7"});</script>
 <script>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-1656750-34']);
