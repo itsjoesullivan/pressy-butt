@@ -2,7 +2,7 @@
 <html>
 <!--
   Created using jsbin.com
-  Source can be edited via http://jsbin.com/honuk/3/edit
+  Source can be edited via http://jsbin.com/honuk/4/edit
 -->
 <head>
 <script src="http://code.jquery.com/jquery-git2.js"></script>
@@ -14,37 +14,43 @@
 </style>
 </head>
 <body>
+  <div id='content'>
+  </div>
 
 <script>
+el = document.getElementById('content');
 var run = function() {
-  console.log('get ready');
   var started = false;
   var done = false;
   var ct = 0;
   $(document).keypress(function(e) { 
     if (done) {
-      console.log('done', count);
-      return 
+      el.innerHTML = 'You played, typing "\\" ' + ct + ' times in 5 seconds. That\'s like ' + (ct*12) + ' times per minute. Tell people about this.';
+      return;
     }
     if (!started) {
-      started = true
-      setTimeout(function(e) {
-        started = false;
-        done = true;
-      }, 5000);
+      
+      if(e.which === 92) {
+         el.innerHTML = 'You are now playing. Type "\\" often.';
+        started = true
+        setTimeout(function(e) {
+          started = false;
+          done = true;
+        }, 5000);
+      } 
     } else {
       if(e.which === 92) {
         ct++;
-        console.log(ct);
       } 
     }
   });
 }
-
 run()
+
+el.innerHTML = 'Press "\\" to begin.';
 </script>
 <script src="http://static.jsbin.com/js/render/edit.js?3.14.1"></script>
-<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"0XTOBLfi79JnQFqOCSrsIYdc"});</script>
+<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"k7MkTik7d4dTah3WmJDKuIQ9"});</script>
 <script>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-1656750-34']);
