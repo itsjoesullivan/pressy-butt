@@ -2,32 +2,41 @@
 <html>
 <!--
   Created using jsbin.com
-  Source can be edited via http://jsbin.com/somagipa/2/edit
+  Source can be edited via http://jsbin.com/somagipa/3/edit
 -->
 <head>
 <script src="http://code.jquery.com/jquery-git2.js"></script>
+  <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
   <meta charset="utf-8">
   <title>JS Bin</title>
 
 <style id="jsbin-css">
 html {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   height: 100%;
+  margin: 0;
+  padding: 20px;
   font-family: sans-serif;
   font-size: 1.5em;
+  line-height: 1.65em;
   color: white;
-  text-shadow: 1px 1px 1px #000000;
-  background: #ff3232; /* Old browsers */
-  background: -moz-linear-gradient(-45deg,  #ff3232 0%, #ffad32 23%, #f1ff32 40%, #32ff40 61%, #32beff 79%, #b600ff 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ff3232), color-stop(23%,#ffad32), color-stop(40%,#f1ff32), color-stop(61%,#32ff40), color-stop(79%,#32beff), color-stop(100%,#b600ff)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(-45deg,  #ff3232 0%,#ffad32 23%,#f1ff32 40%,#32ff40 61%,#32beff 79%,#b600ff 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(-45deg,  #ff3232 0%,#ffad32 23%,#f1ff32 40%,#32ff40 61%,#32beff 79%,#b600ff 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(-45deg,  #ff3232 0%,#ffad32 23%,#f1ff32 40%,#32ff40 61%,#32beff 79%,#b600ff 100%); /* IE10+ */
-  background: linear-gradient(135deg,  #ff3232 0%,#ffad32 23%,#f1ff32 40%,#32ff40 61%,#32beff 79%,#b600ff 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#b600ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 1px 1px 1px #DB00A4;
+  background: #ff32d6; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #ff32d6 0%, #ffbff9 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ff32d6), color-stop(100%,#ffbff9)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #ff32d6 0%,#ffbff9 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #ff32d6 0%,#ffbff9 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #ff32d6 0%,#ffbff9 100%); /* IE10+ */
+background: linear-gradient(135deg,  #ff32d6 0%,#ffbff9 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff32d6', endColorstr='#ffbff9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 
 }
 </style>
@@ -37,20 +46,26 @@ body {
   </div>
 
 <script>
+var app = new Firebase('https://blinding-fire-2928.firebaseio.com');
+
+app.set('scores', []);
+app.get
+
 el = document.getElementById('content');
 var run = function() {
   var started = false;
   var done = false;
   var ct = 0;
   var timeout = false;
-  $(document).keypress(function(e) { 
+  $(document).keyup(function(e) { 
+    console.log(e.which);
     if (done) {
-      el.innerHTML = 'You played, typing "\\" ' + ct + ' times in 5 seconds. That\'s like ' + (ct*12) + ' times per minute. Tell someone!';
+      el.innerHTML = 'You played, typing "\\" ' + ct + ' times in 5 seconds. That\'s like ' + (ct*12) + ' times per minute. Tell people about this.';
       return;
     }
     if (!started) {
       
-      if(e.which === 92) {
+      if(e.which === 220) {
          el.innerHTML = 'You are now playing. Type "\\" often.';
         started = true
         timeout = setTimeout(function(e) {
@@ -59,10 +74,10 @@ var run = function() {
         }, 5000);
       } 
     } else {
-      if(e.which === 92) {
+      if(e.which === 220) {
         if( ct > 100) {
           clearTimeout( timeout );
-          el.innerHTML = "DONT CHEAT";
+          el.innerHTML = "DON'T CHEAT";
         }
         ct++;
       } 
@@ -74,7 +89,7 @@ run()
 el.innerHTML = 'Press "\\" to begin.';
 </script>
 <script src="http://static.jsbin.com/js/render/edit.js?3.14.1"></script>
-<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"eapG6A2LyE8iwEUTVFyOLNF/"});</script>
+<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"SeCVcDXVHGMWNvSSfGHxALlm"});</script>
 <script>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-1656750-34']);
