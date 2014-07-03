@@ -2,7 +2,7 @@
 <html>
 <!--
   Created using jsbin.com
-  Source can be edited via http://jsbin.com/honuk/1/edit
+  Source can be edited via http://jsbin.com/honuk/2/edit
 -->
 <head>
 <script src="http://code.jquery.com/jquery-git2.js"></script>
@@ -16,14 +16,35 @@
 <body>
 
 <script>
-$(document).keypress(function(e) { 
-  if (e.which === 92) {
-    console.log('count');
-  }
+var run = function() {
+  var started = false;
+  var done = false;
+  var ct = 0;
+  $(document).keypress(function(e) { 
+    if (done) {
+      console.log('done', count);
+      return 
+    }
+    if (!started) {
+      started = true
+      setTimeout(function(e) {
+        started = false;
+        done = true;
+      }, 5000);
+    } else {
+      if(e.which === 92) {
+        ct++;
+        console.log(ct);
+      } 
+    }
+  });
 });
+  
+
+}
 </script>
 <script src="http://static.jsbin.com/js/render/edit.js?3.14.1"></script>
-<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"ePl4yJNbN8qFFY/g0NVXJJJG"});</script>
+<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"Kr8GQaGgHTaCkq34QAtzLqJZ"});</script>
 <script>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-1656750-34']);
