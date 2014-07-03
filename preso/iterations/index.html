@@ -2,7 +2,7 @@
 <html>
 <!--
   Created using jsbin.com
-  Source can be edited via http://jsbin.com/somagipa/13/edit
+  Source can be edited via http://jsbin.com/somagipa/14/edit
 -->
 <head>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
@@ -102,7 +102,7 @@ app.child('scores').on('value', function(snapshot) {
   });
   var str = '<ul>';
   array.forEach(function(score) {
-    str += '<li>' + score.score + ' -- ' + score.name + '</li>';
+    str += '<li>' + score.score + ': ' + score.name + '</li>';
   })
   str += '</ul>';
   document.getElementById('scoreboard').innerHTML = str
@@ -116,8 +116,12 @@ var run = function() {
   var done = false;
   var ct = 0;
   var timeout = false;
+  $(document).keydown(function(e) {
+    if( e.which === 220 && $(e.target).is('input') ) {
+      $(e.target).blur();
+    }
+  });
   $(document).keyup(function(e) { 
-    
     if (done) {
       el.innerHTML = 'You played, typing "\\" ' + ct + ' times in 5 seconds. That\'s like ' + (ct*12) + ' times per minute. Tell people about this.';
       return;
@@ -152,7 +156,7 @@ run()
 el.innerHTML = 'Press "\\" to begin.';
 </script>
 <script src="http://static.jsbin.com/js/render/edit.js?3.14.1"></script>
-<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"WKtqj6TRLW7Ew9N+Txv83y4h"});</script>
+<script>jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com","csrf":"QH/1Y3cIB0NsQvoF2smw5cbw"});</script>
 <script>
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-1656750-34']);
